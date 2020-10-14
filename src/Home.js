@@ -1,13 +1,14 @@
 import React from 'react'
 import Product from './Product.js'
 import "./Home.css";
+import home_banner from './static/Img/home_banner1.jpg'
 
 function Home() {
     return (
       <div className="home">
         <img
           className="home__img"
-          src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_FT_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB408004054_.jpg"
+          src={home_banner}
           alt=""
         />
         <div className="home__row">

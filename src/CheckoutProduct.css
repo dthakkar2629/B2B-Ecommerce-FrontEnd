@@ -1,21 +1,26 @@
 .checkoutProduct {
-    /* display: flex; */
+    display: flex; 
     margin-top: 20px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .checkoutProduct__image {
     object-fit: contain;
     width: 180px;
     height: 180px;
+    display: flex;
 }
 
-.checkoutProduct__info {
+.checkoutProduct__info {    
     padding-left: 20px;
 }
 
 .checkoutProduct__rating {
     display: flex;
+
+    
 }
 
 .checkoutProduct__title {

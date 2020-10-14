@@ -5,6 +5,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
 import { useStateValue } from "./StateProvider";
 
+import logo from './static/Img/logo.PNG';
+
 function Header() {
   const [{basket}] = useStateValue();
   console.log(basket);
@@ -14,7 +16,7 @@ function Header() {
         <Link to="/">
           <img
             className="header__logo"
-            src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+            src={logo}
             alt=""
           />
         </Link>
