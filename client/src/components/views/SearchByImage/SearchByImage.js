@@ -75,6 +75,8 @@ class SearchByImage extends Component {
         console.log(formData)
         console.log(this.state.files[0].path);
 
+        let fileName = this.state.files[0].name;
+
         // console.log(this.state.files[0].path)
         // const searchImage = {
         //     images: this.state.files[0].path
@@ -91,7 +93,7 @@ class SearchByImage extends Component {
             }
         )
             .then(resp => {
-                 this.getImageClass(formData)
+                this.getImageClass(formData, fileName)
                 console.log(resp.data);
                 console.log(resp.data.response[0].detections[0]);
 
@@ -106,7 +108,7 @@ class SearchByImage extends Component {
             })
     }
 
-    getImageClass = (obj) => {
+    getImageClass = (obj, fileName) => {
         axios.post(`http://localhost:5000/image`, obj, {
             headers: {
                 'Content-Type': 'application/json',
@@ -114,7 +116,11 @@ class SearchByImage extends Component {
             }
         })
             .then(resp => {
-                this.setState({ recentImage: `http://localhost:5000/img/as` })
+                console.log('Obj', obj)
+                console.log('File', fileName)
+                this.setState({ recentImage: `http://localhost:5000/img/${fileName}` })
+                // this.setState({ recentImage: null })
+                // this.getImage()
                 console.log(resp)
                 console.log(this.state.recentImage)
             })
@@ -124,6 +130,19 @@ class SearchByImage extends Component {
         this.deactivateSpinner()
 
     }
+
+    // getImage = () => {
+    //     this.setState({ recentImage: null })
+
+    //     axios.get(`http://localhost:5000/img/`)
+    //         .then(res => {
+
+    //             this.setState({ recentImage: `http://localhost:5000/img/` })
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    // }
 
     render() {
         const files = this.state.files.map(file => (
@@ -151,7 +170,7 @@ class SearchByImage extends Component {
                         {this.state.isLoading &&
                             <Spinner animation="border" role="status"></Spinner>
                         }
-{/* 
+                        {/* 
                         {this.state.recentImage &&
                             <React.Fragment>
                                 <Alert variant='primary'>
